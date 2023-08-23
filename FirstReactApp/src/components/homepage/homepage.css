@@ -1,0 +1,9 @@
+*{
+    margin:0;
+    padding:0;
+}
+.homepage_container{
+    background-color: black;
+    height: 60px;
+    width: 100%;
+}
