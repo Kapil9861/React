@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import "./todo.css";
+import DisplayTodo from "./displayTodo";
 
 export default function TodoList() {
   let [todo, setTodo] = useState({
@@ -10,6 +11,13 @@ export default function TodoList() {
     status: "",
   });
   let [todoList, setTodolist] = useState([]);
+
+  function removeHandler(index) {
+    let newTodoList = todoList.filter((item, i) => {
+      return i != index;
+    });
+    setTodolist(newTodoList); //everytime you call the set function it re renders all the latest things
+  }
 
   function addTodoHandler(event) {
     event.preventDefault();
@@ -66,12 +74,18 @@ export default function TodoList() {
           <div>
             {todoList.map((value, index) => {
               return (
-                
-                  <div key={index} className="todo_container">
-                    <p>{value.title}</p>
-                    <p>{value.content}</p>
-                    <p>{value.status}</p>
-                  </div>
+                <DisplayTodo
+                  key={index}       //Key must be the unique id like key={index.id}
+                  value={value}
+                  index={index}
+                  removeHandler={removeHandler}
+                />
+                // for Doing this in the next page
+                // <div key={value} className="todo_container">
+                //   <p>{value.title}</p>
+                //   <p>{value.content}</p>
+                //   <p>{value.status}</p>
+                // </div>
               );
             })}
           </div>
