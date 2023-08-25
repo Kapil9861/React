@@ -18,7 +18,19 @@ function DisplayTodo(props) {
       <p>{value.content}</p>
       <p>{value.status}</p>
       {console.log(index)}
-      <button onClick={() => TodoHandler(index)}>Delete</button>
+      <button
+        onClick={() => TodoHandler(index)}
+        style={{
+          backgroundColor: "red", // Example background color
+          color: "white", // Example text color
+          border: "none",
+          padding: "8px 16px",
+          borderRadius: "4px",
+          cursor: "pointer",
+        }}
+      >
+        Delete
+      </button>
     </div>
   );
 }
